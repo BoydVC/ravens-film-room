@@ -1,0 +1,207 @@
+#!/usr/bin/env python3
+"""Curate Ravens research facts from Jim Interest Journal files already on disk.
+Only copies facts that appear in those files. Gaps are labeled. Never invents."""
+import json, os
+from datetime import datetime
+from zoneinfo import ZoneInfo
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+ET = ZoneInfo("America/New_York")
+
+# Every bullet below is grounded in a cited journal file. Quotes are verbatim where marked.
+R = {
+  "generatedAt": datetime.now(ET).strftime("%Y-%m-%dT%H:%M:%S%z"),
+  "asOfLabel": "Jim Interest Journal research through Wed Oct 7, 2026 (latest Ravens section on disk). Status changes fast — gaps labeled.",
+  "record": "3–1",
+  "nextGame": {
+    "label": "Week 5 · BAL @ ATL",
+    "whenEt": "Sun Oct 11, 2026, 8:20 PM ET",
+    "venue": "Mercedes-Benz Stadium, Atlanta, GA",
+    "sourceFiles": ["data/scout.json (ESPN schedule)", "ij_2026-10-07_research.md"],
+  },
+  "headlineTrade": {
+    "title": "Ravens acquire C Cam Jurgens from the Eagles",
+    "whenEt": "Wed Oct 7, 2026 ~1:00 PM ET",
+    "give": ["2027 5th-round pick", "2028 2nd-round pick"],
+    "get": ["Cam Jurgens", "2027 7th-round pick"],
+    "profile": "27, two-time Pro Bowler, under contract through 2029 ($17M AAV).",
+    "status": "In concussion protocol. Per Schefter (via journal), expected to debut next week vs Cleveland — not at Atlanta.",
+    "olPlan": "Ioane moves back to RG and Simpson plays LG. Three veteran centers (Pinter, Gwyn, Pocic) are on IR.",
+    "note": "Biggest Ravens trade since Roquan Smith.",
+    "sources": [
+      {"file": "ij_2026-10-07_research.md", "urls": [
+        "https://www.baltimoreravens.com/news/ravens-trade-cam-jurgens-center-pro-bowl-injuries-2026",
+        "https://www.nfl.com/news/cam-jurgens-ravens-eagles-trade",
+      ]},
+    ],
+  },
+  "lamarTimeline": [
+    {
+      "date": "2026-10-04",
+      "title": "Ankle injured vs Titans",
+      "text": "Hurt left ankle on a sack (Jermaine Johnson) on the last offensive snap of the first half; did not return. Left in a walking boot. Stats before exit: 15/20, 222 yards, 2 TDs.",
+      "file": "ij_2026-10-04_research.md",
+      "urls": [
+        "https://www.baltimoreravens.com/news/lamar-jackson-ankle-injury-ravens-titans-tyler-huntley",
+        "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/lamar-jackson-is-believed-to-week-to-week-pending-an-mri",
+      ],
+    },
+    {
+      "date": "2026-10-05",
+      "title": "No MRI result public yet",
+      "text": 'Minter Mon: "I don\'t know the chances yet… I really don\'t think it\'s going to be crazy long-term." If Lamar can\'t go, Huntley starts (5–6 as fill-in).',
+      "file": "ij_2026-10-05_research.md",
+      "urls": [
+        "https://www.baltimoreravens.com/news/lamar-jackson-ankle-injury-update-jesse-minter-ravens",
+        "https://www.espn.com/nfl/story/_/id/50111347/ravens-unsure-lamar-jackson-ankle-play-vs-falcons",
+      ],
+    },
+    {
+      "date": "2026-10-06",
+      "title": "MRI: left ankle sprain; outside chance for Sunday",
+      "text": 'Rapoport/ESPN: left ankle sprain, "outside chance" to play Sunday; could miss multiple games; not considered long-term / shouldn\'t need surgery. Huntley gets first-team reps. Line swung from BAL -6 (lookahead) to BAL +3 (9-point swing); total 46.5 → 43.5. Journal notes Ravens 6–11 without Lamar since 2019.',
+      "file": "ij_2026-10-06_research.md",
+      "urls": [
+        "https://www.espn.com/nfl/story/_/id/50116449/sources-ravens-qb-lamar-jackson-dealing-ankle-sprain",
+        "https://www.covers.com/industry/ravens-falcons-line-swings-9-points-amid-lamar-injury-doubts-oct-6-2026",
+      ],
+    },
+    {
+      "date": "2026-10-07",
+      "title": "DNP Wednesday; unconventional sprain",
+      "text": 'Did not practice; skipped usual Wed media. Rapoport: sprain "unconventional" — neither low nor high ankle. Still "outside chance" for Sunday. Minter: "There is a lot of time between now and Sunday… When he is ready to play, he will be ready to play." Huntley and rookie Joe Fagnano took QB reps.',
+      "file": "ij_2026-10-07_research.md",
+      "urls": [
+        "https://www.nbcsports.com/fantasy/football/player-news/2026-10-07/lamars-ankle-sprain-neither-low-nor-high",
+        "https://www.baltimoreravens.com/news/lamar-jackson-not-at-first-practice-following-ankle-injury-ravens-falcons-week-5",
+      ],
+    },
+  ],
+  "wedInjuryReport": {
+    "asOfEt": "Wed Oct 7, 2026 ~5:57 PM ET",
+    "file": "ij_2026-10-07_research.md",
+    "url": "https://russellstreetreport.com/2026/10/07/injury-report/injury-report-ravens-falcons-wednesday/",
+    "didNotPractice": [
+      {"name": "Lamar Jackson", "pos": "QB", "note": "ankle"},
+      {"name": "Marlon Humphrey", "pos": "CB", "note": "hamstring/calf"},
+      {"name": "Ronnie Stanley", "pos": "LT", "note": "rest/toe/ankle"},
+      {"name": "Andrew Vorhees", "pos": "RG", "note": "foot"},
+      {"name": "Trey Hendrickson", "pos": "EDGE", "note": "finger"},
+      {"name": "Campbell", "pos": "—", "note": "rest"},
+      {"name": "Durham Smythe", "pos": "TE", "note": "Achilles; now on IR"},
+    ],
+    "limited": [
+      {"name": "Zay Flowers", "pos": "WR", "note": "foot"},
+      {"name": "Rashod Bateman", "pos": "WR", "note": "shoulder"},
+      {"name": "Kyle Hamilton", "pos": "S", "note": "groin"},
+      {"name": "Chris Moore", "pos": "WR", "note": "ankle"},
+      {"name": "John Simpson", "pos": "G", "note": "groin"},
+    ],
+    "gap": "Official Friday injury designations (OUT / Doubtful / Questionable / Probable) were not yet in the Oct 7 journal. ESPN's pre-game injury list (scout.json, fetched Oct 7) is also incomplete vs this Wed report — both are shown on the Injury Board and labeled by source.",
+  },
+  "otherInjuries": [
+    {
+      "name": "Durham Smythe",
+      "pos": "TE",
+      "status": "Season-ending — torn Achilles (IR)",
+      "file": "ij_2026-10-06_research.md",
+      "urls": ["https://www.baltimoreravens.com/news/durham-smythe-torn-achilles-ravens-tight-end-out-for-season"],
+      "depthNote": "Mark Andrews leads TE room; rookies Matt Hibner and Josh Cuevas plus practice-squad Nick Vannett are next.",
+    },
+    {
+      "name": "Jovaughn Gwyn",
+      "pos": "C",
+      "status": "Long-term (ankle) — IR / significant",
+      "file": "ij_2026-09-28_research.md",
+      "urls": ["https://www.baltimoreravens.com/news/jovaugh-gwyn-ethan-pocic-suffer-longer-term-injuries-against-dallas-vega-ioane-poised-to-remain-at-center"],
+    },
+    {
+      "name": "Ethan Pocic",
+      "pos": "C",
+      "status": "Long-term (knee) — IR / significant",
+      "file": "ij_2026-09-28_research.md",
+      "urls": ["https://www.baltimoreravens.com/news/jovaugh-gwyn-ethan-pocic-suffer-longer-term-injuries-against-dallas-vega-ioane-poised-to-remain-at-center"],
+    },
+  ],
+  "depthChart": {
+    "disclaimer": "Projected Week 5 / near-term plan from Jim research only — not an official Ravens depth chart. Positions with no journal coverage are marked GAP.",
+    "asOfFile": "ij_2026-10-07_research.md (+ prior OL notes in ij_2026-09-28 / 09-29)",
+    "offense": [
+      {"pos": "QB", "starter": "Lamar Jackson", "note": "Left ankle sprain; Wed DNP; outside chance for Sun. Huntley took 1st-team reps; Fagnano also.", "backup": "Tyler Huntley · Joe Fagnano (rookie)", "gap": False},
+      {"pos": "RB", "starter": "Derrick Henry", "note": "23/73/1 TD vs TEN (his old team); 7 rush TDs through 4 games (first since 2015 per journal).", "backup": "—", "gap": True, "gapLabel": "Backup RB depth not covered in Oct journals"},
+      {"pos": "WR", "starter": "Zay Flowers", "note": "8/118/1 TD vs TEN; Wed limited (foot).", "backup": "Rashod Bateman (Wed limited, shoulder) · Chris Moore (Wed limited, ankle)", "gap": False},
+      {"pos": "TE", "starter": "Mark Andrews", "note": "3-yd TD capping 98-yd drive vs TEN. Smythe IR (torn Achilles).", "backup": "Matt Hibner · Josh Cuevas · Nick Vannett (PS)", "gap": False},
+      {"pos": "LT", "starter": "Ronnie Stanley", "note": "Wed DNP (rest/toe/ankle). Returned Week 4 after missing Week 3.", "backup": "—", "gap": True, "gapLabel": "Swing tackle depth not named in journals"},
+      {"pos": "LG", "starter": "John Simpson (plan)", "note": "After Jurgens arrives: Simpson at LG. Wed limited (groin).", "backup": "—", "gap": False},
+      {"pos": "C", "starter": "Vega Ioane (Week 5) → Cam Jurgens (expected Week 6)", "note": "Jurgens in concussion protocol; Schefter: debut vs CLE not ATL. Ioane (14th overall, Penn State) has been the C plan since Gwyn/Pocic long-term.", "backup": "IR: Pinter, Gwyn, Pocic", "gap": False},
+      {"pos": "RG", "starter": "Andrew Vorhees / Ioane (plan)", "note": "Vorhees Wed DNP (foot). When Jurgens starts C, Ioane slides to RG. Oct 5 journal: Emery Jones Jr. could start RG if Vorhees misses.", "backup": "Emery Jones Jr. (possible)", "gap": False},
+      {"pos": "RT", "starter": "—", "note": "", "backup": "—", "gap": True, "gapLabel": "RT starter not named in the Oct research sections used here"},
+    ],
+    "defense": [
+      {"pos": "EDGE", "starter": "Trey Hendrickson", "note": "Wed DNP (finger). Was out Week 4 vs TEN per Oct 4 journal.", "backup": "—", "gap": True, "gapLabel": "Full EDGE rotation not listed"},
+      {"pos": "DT", "starter": "Nnamdi Madubuike", "note": "Stuffed 4th-and-goal at the 2 vs TEN.", "backup": "—", "gap": True, "gapLabel": "DT depth not covered"},
+      {"pos": "LB", "starter": "Trenton Simpson", "note": "First career INT vs TEN.", "backup": "—", "gap": True, "gapLabel": "Full LB corps not covered"},
+      {"pos": "CB", "starter": "Marlon Humphrey", "note": "Wed DNP (hamstring/calf). Left Week 4, did not return.", "backup": "—", "gap": True, "gapLabel": "Corner depth beyond Humphrey not covered"},
+      {"pos": "S", "starter": "Kyle Hamilton", "note": "Forced a fumble vs TEN; Wed limited (groin). Malaki Starks recovered late onside kick.", "backup": "Malaki Starks", "gap": False},
+    ],
+  },
+  "filmNotesLastGame": {
+    "game": "Week 4 · TEN @ BAL · Sun Oct 4, 2026 · Final BAL 24, TEN 18",
+    "venue": "M&T Bank Stadium (rain)",
+    "file": "ij_2026-10-04_research.md",
+    "urls": [
+      "https://www.cbssports.com/nfl/gametracker/recap/NFL_20261004_TEN@BAL/",
+      "https://www.baltimoreravens.com/news/game-recap-ravens-titans-week-4-game-recap-injuries-lamar-jackson",
+    ],
+    "bullets": [
+      "Led 24–7 at halftime; scored 0 in the second half. TEN within 6 on Cam Ward 3-yd TD to Wan'Dale Robinson + 2-pt with 1:12 left; Malaki Starks recovered the onside kick.",
+      "Snapped a four-game home losing streak.",
+      "Tyler Loop: 64-yard FG as first half expired — career long, longest ever at M&T, 2nd-longest in franchise history.",
+      "Zay Flowers: 8/118/1 TD (19-yd score; catches of 52 and 23).",
+      "Mark Andrews: 3-yd TD capping a 98-yard drive after TEN turned it over on downs at the BAL 2.",
+      "Derrick Henry: 23/73/1 TD vs former team; first player since 2015 with 7 rush TDs in first four games.",
+      "Defense: Trenton Simpson first career INT; Kyle Hamilton FF; Madubuike stuffed 4th-and-goal; rookie Ethan Burke first sack.",
+      "Tyler Huntley: 8/9 for 63 yards in relief after Lamar's exit.",
+      "Penalties: 13 for 131 yards.",
+      "Also left and did not return: Humphrey (calf), Smythe (Achilles), Vorhees (foot). Stanley (toe) returned after missing Week 3.",
+    ],
+  },
+  "lineContext": {
+    "disclaimer": "Betting lines below are copied from journals / ESPN snapshot for context only — not advice. Lines move.",
+    "espnSnapshot": {
+      "details": "ATL -3.5",
+      "ou": 43.5,
+      "balML": 150,
+      "atlML": -180,
+      "provider": "DraftKings via ESPN pickcenter",
+      "fetchedAt": "2026-10-07T17:33:52-04:00",
+      "source": "data/scout.json",
+    },
+    "journalMoves": [
+      {"file": "ij_2026-10-05_research.md", "text": "DraftKings moved from Ravens -6 (lookahead) to -3.5."},
+      {"file": "ij_2026-10-06_research.md", "text": "Line flipped to Ravens +3 (9-point swing from -6); total 46.5 → 43.5."},
+      {"file": "ij_2026-10-07_research.md", "text": "No new move found Wednesday. Consensus still about ATL -3, total around 43.5–44."},
+    ],
+  },
+  "gaps": [
+    "No Thursday or Friday (Oct 8–9) injury report in the journal set on disk — Wed Oct 7 is the latest Ravens practice report.",
+    "ESPN pre-game injury feed (scout.json) omits several names that appear on the Wed journal report (e.g. Jackson, Humphrey, Stanley, Vorhees, Hendrickson).",
+    "Full official depth chart (all 11 starters + backups) is not published in these journals — only the positions called out above.",
+    "RT starter and most defensive depth beyond named standouts are GAP.",
+  ],
+  "sourceFiles": [
+    "/workspace/ij_2026-10-07_research.md",
+    "/workspace/ij_2026-10-06_research.md",
+    "/workspace/ij_2026-10-05_research.md",
+    "/workspace/ij_2026-10-04_research.md",
+    "/workspace/ij_2026-09-29_research.md",
+    "/workspace/ij_2026-09-28_research.md",
+    "/workspace/ij_2026-10-01_research.md",
+  ],
+}
+
+os.makedirs(os.path.join(HERE, "data"), exist_ok=True)
+out = os.path.join(HERE, "data", "research.json")
+with open(out, "w", encoding="utf-8") as f:
+    json.dump(R, f, indent=2, ensure_ascii=False)
+print("wrote", out, os.path.getsize(out), "bytes")

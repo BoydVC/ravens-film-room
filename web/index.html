@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ravens Film Room · War Room</title>
+<link rel="stylesheet" href="style.css">
+<!--FILMDATA-->
+<!--SCOUTDATA-->
+<!--RESEARCHDATA-->
+</head>
+<body>
+<div class="film-grain" aria-hidden="true"></div>
+<div class="scanlines" aria-hidden="true"></div>
+<div id="app">
+  <header class="top war-top">
+    <div class="brand">
+      <div class="kicker">RAVENS FILM ROOM · <span id="season-name">2026</span> · <span class="pulse-dot"></span> WAR ROOM</div>
+      <div class="title">Film Room</div>
+      <div class="subhead" id="subhead">Boyd edition · ESPN box scores + Jim research (cited)</div>
+    </div>
+    <div class="rec-pill" id="rec-pill"></div>
+  </header>
+
+  <nav class="screens" id="screen-nav" role="tablist">
+    <button type="button" class="sn on" data-screen="war" role="tab" aria-selected="true">War Room</button>
+    <button type="button" class="sn" data-screen="film" role="tab">Film</button>
+    <button type="button" class="sn" data-screen="next" role="tab">Next Game</button>
+    <button type="button" class="sn" data-screen="injuries" role="tab">Injury Board</button>
+    <button type="button" class="sn" data-screen="depth" role="tab">Depth Chart</button>
+    <button type="button" class="sn" data-screen="notes" role="tab">Film Notes</button>
+  </nav>
+
+  <!-- WAR ROOM -->
+  <section id="screen-war" class="screen on" role="tabpanel">
+    <div id="war-root"></div>
+  </section>
+
+  <!-- FILM ROOM (existing ESPN game breakdown) -->
+  <section id="screen-film" class="screen" role="tabpanel" hidden>
+    <div class="strip" id="strip"></div>
+    <section class="score card" id="scoreboard"></section>
+    <section class="notes" id="notes"></section>
+    <section class="card" id="drives"></section>
+    <section class="grid2">
+      <div class="card" id="scoring"></div>
+      <div class="card" id="wp"></div>
+    </section>
+    <section class="grid2">
+      <div class="card" id="keyplays"></div>
+      <div class="card" id="leaders"></div>
+    </section>
+    <section class="card" id="audit"></section>
+    <footer class="card" id="sources"></footer>
+  </section>
+
+  <!-- NEXT GAME (scout) -->
+  <section id="screen-next" class="screen" role="tabpanel" hidden>
+    <div class="research-banner" id="next-research-banner"></div>
+    <span id="kick" hidden></span>
+    <section class="card matchup" id="matchup"></section>
+    <section class="card" id="keys"></section>
+    <section class="grid2">
+      <div class="card" id="stats"></div>
+      <div class="stack"><div class="card" id="results"></div><div class="card" id="injuries"></div></div>
+    </section>
+    <section class="card" id="oppdrives"></section>
+    <section class="card" id="saudit"></section>
+    <footer class="card" id="ssources"></footer>
+  </section>
+
+  <!-- INJURY BOARD -->
+  <section id="screen-injuries" class="screen" role="tabpanel" hidden>
+    <div id="injuries-root"></div>
+  </section>
+
+  <!-- DEPTH CHART -->
+  <section id="screen-depth" class="screen" role="tabpanel" hidden>
+    <div id="depth-root"></div>
+  </section>
+
+  <!-- FILM NOTES -->
+  <section id="screen-notes" class="screen" role="tabpanel" hidden>
+    <div id="notes-root"></div>
+  </section>
+</div>
+<div id="tip" class="tip"></div>
+<script src="common.js"></script>
+<script src="hub.js"></script>
+<script src="app.js"></script>
+<script src="scout.js"></script>
+</body>
+</html>

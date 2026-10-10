@@ -1,0 +1,66 @@
+{
+ "schedule": {
+  "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/teams/bal/schedule",
+  "fetchedAt": "2026-10-07T17:33:50-04:00"
+ },
+ "summaries": {
+  "401872659": {
+   "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401872659",
+   "fetchedAt": "2026-10-07T17:33:51-04:00"
+  },
+  "401872938": {
+   "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401872938",
+   "fetchedAt": "2026-10-07T17:33:51-04:00"
+  },
+  "401872960": {
+   "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401872960",
+   "fetchedAt": "2026-10-07T17:33:51-04:00"
+  },
+  "401872973": {
+   "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401872973",
+   "fetchedAt": "2026-10-07T17:33:52-04:00"
+  },
+  "401872658": {
+   "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401872658",
+   "fetchedAt": "2026-10-07T17:33:53-04:00"
+  },
+  "401872933": {
+   "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401872933",
+   "fetchedAt": "2026-10-07T17:33:53-04:00"
+  },
+  "401872948": {
+   "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401872948",
+   "fetchedAt": "2026-10-07T17:33:53-04:00"
+  },
+  "401872979": {
+   "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401872979",
+   "fetchedAt": "2026-10-07T17:33:54-04:00"
+  }
+ },
+ "scout": {
+  "event": "401872993",
+  "opp": "ATL",
+  "teamIds": {
+   "ATL": "1",
+   "BAL": "33"
+  },
+  "pregame": {
+   "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401872993",
+   "fetchedAt": "2026-10-07T17:33:52-04:00"
+  },
+  "oppSchedule": {
+   "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/teams/atl/schedule",
+   "fetchedAt": "2026-10-07T17:33:52-04:00"
+  },
+  "teamStats": {
+   "ATL": {
+    "url": "https://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2026/types/2/teams/1/statistics",
+    "fetchedAt": "2026-10-07T17:33:54-04:00"
+   },
+   "BAL": {
+    "url": "https://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2026/types/2/teams/33/statistics",
+    "fetchedAt": "2026-10-07T17:33:54-04:00"
+   }
+  }
+ }
+}
