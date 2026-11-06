@@ -1,6 +1,6 @@
 # Ravens Film Room
 
-Interactive Ravens war room for Boyd: ESPN drive-chart film breakdown, Week 5 scouting, plus a research-backed **Injury Board**, **Depth Chart**, and **Film Notes** (Jim Interest Journal facts only — cited on-page, gaps labeled).
+Interactive Ravens war room for Alex: ESPN drive-chart film breakdown, Week 5 scouting, plus a research-backed **Injury Board**, **Depth Chart**, and **Film Notes** (Jim Interest Journal facts only — cited on-page, gaps labeled).
 
 **Current game (latest completed):** Week 4, Sun Oct 4, 2026 — TEN @ BAL, **BAL 24, TEN 18**.
 **Next:** Week 5, Sun Oct 11, 8:20 PM ET — BAL @ ATL (Mercedes-Benz Stadium).
@@ -109,7 +109,7 @@ Public ESPN data only. No accounts, no keys, nothing sent anywhere. The server b
 
 ---
 ## Repo notes
-- **Built:** Oct 4, 2026, by TokenMax (Boyd's Grok Bot) on the Grok Bot box.
+- **Built:** Oct 4, 2026, by TokenMax (Alex's Grok Bot) on the Grok Bot box.
 - **Run:** `./run.sh` (then open the localhost URL it prints).
 - Imported from `/workspace/tokenmax/ravens-film-room` on Oct 23, 2026. node_modules, virtualenvs, logs and files over 20 MB were left out.
 - Personal details (emails, phone numbers, home street address) were replaced with `[redacted-…]` placeholders.
